@@ -1,0 +1,673 @@
+{
+    "#info": {
+        "name": "TUI",
+        "creator": "mxmgorin",
+        "description": "A DOS-era text mode look: the VGA font, framed windows with shadows, and a key bar.\n\nColor schemes: Blue, Black, Green Phosphor and Amber Phosphor.",
+        "version": 1,
+        "default-scheme": "Blue"
+    },
+    "#schemes": {
+        "#base": {
+            "#resources": {
+                "buttons.png": {
+                    "atlas": {
+                        "_A": [ 0, 0, 16, 16 ], "_B": [ 16, 0, 16, 16 ], "_X": [ 32, 0, 16, 16 ], "_Y": [ 48, 0, 16, 16 ],
+                        "_L": [ 64, 0, 16, 16 ], "_R": [ 80, 0, 16, 16 ],
+                        "_START": [ 96, 0, 48, 16 ], "_SELECT": [ 144, 0, 56, 16 ],
+                        "_UP": [ 200, 0, 16, 16 ], "_DOWN": [ 216, 0, 16, 16 ], "_LEFT": [ 232, 0, 16, 16 ], "_RIGHT": [ 248, 0, 16, 16 ],
+                        "_MORE": [ 264, 0, 16, 16 ],
+                        "_A[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0, 16, 32, 32 ],
+                        "_B[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 32, 16, 32, 32 ],
+                        "_X[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 64, 16, 32, 32 ],
+                        "_Y[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 96, 16, 32, 32 ],
+                        "_L[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 128, 16, 32, 32 ],
+                        "_R[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 160, 16, 32, 32 ],
+                        "_START[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 192, 16, 96, 32 ],
+                        "_SELECT[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 288, 16, 112, 32 ],
+                        "_UP[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 400, 16, 32, 32 ],
+                        "_DOWN[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 432, 16, 32, 32 ],
+                        "_LEFT[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 464, 16, 32, 32 ],
+                        "_RIGHT[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 496, 16, 32, 32 ],
+                        "_MORE[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 528, 16, 32, 32 ]
+                    }
+                },
+                "logo.png": {
+                    "atlas": {
+                        "LOGO": [ 576, 0, 576, 64 ], "LOGO_SHADOW": [ 0, 64, 576, 64 ],
+                        "LOGO[lowres]": [ 0, 0, 288, 32 ], "LOGO_SHADOW[lowres]": [ 288, 0, 288, 32 ],
+                        "LOGO[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0, 128, 1152, 128 ],
+                        "LOGO_SHADOW[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0, 256, 1152, 128 ],
+                        "LOGO[960x720|1024x768|1240x1080]": [ 576, 0, 576, 64 ], "LOGO_SHADOW[960x720|1024x768|1240x1080]": [ 0, 64, 576, 64 ]
+                    }
+                },
+                "no-image.png": { "name": "NO_IMAGE" },
+                "frame.png": {},
+                "frame_hi.png": {},
+                "frame_single.png": {},
+                "frame_single_hi.png": {},
+                "pattern.png": {},
+                "pattern_hi.png": {},
+                "track.png": {},
+                "track_hi.png": {},
+                "bar_end.png": {}
+            }
+        },
+        "Blue": {
+            "#pallet": {
+                "desktop": "#aaaaaa", "pattern": "#0000aa", "panel": "#0000aa",
+                "frame": "#ffffff", "title": "#ffffff", "on_title": "#0000aa",
+                "frame_off": "#aaaaaa", "title_off": "#aaaaaa", "on_title_off": "#0000aa",
+                "text": "#55ffff", "text_hi": "#ffff55", "text_dim": "#aaaaaa", "section": "#ffffff",
+                "select": "#00bbbb", "on_select": "#000000",
+                "bar": "#aaaaaa", "on_bar": "#000000",
+                "dialog": "#aaaaaa", "on_dialog": "#000000", "dialog_frame": "#ffffff",
+                "progress": "#55ffff", "track": "#55ffff",
+                "logo": "#ffff55", "logo_shadow": "#00aaaa",
+                "fade": [ 0, 0, 0, 110 ]
+            },
+            "#resources": {
+                "bar_end.png": { "image-mod": [ 0, 187, 187 ] },
+                "buttons.png": { "image-mod": [ 0, 0, 0 ] },
+                "no-image.png": { "image-mod": [ 0, 170, 170 ] },
+                "scanlines_off.png": { "name": "SCANLINES" }
+            }
+        },
+        "Black": {
+            "#pallet": {
+                "desktop": "#000000", "pattern": "#555555", "panel": "#000000",
+                "frame": "#aaaaaa", "title": "#aaaaaa", "on_title": "#000000",
+                "frame_off": "#555555", "title_off": "#555555", "on_title_off": "#aaaaaa",
+                "text": "#aaaaaa", "text_hi": "#ffffff", "text_dim": "#808080", "section": "#ffffff",
+                "select": "#aaaaaa", "on_select": "#000000",
+                "bar": "#aaaaaa", "on_bar": "#000000",
+                "dialog": "#aaaaaa", "on_dialog": "#000000", "dialog_frame": "#ffffff",
+                "progress": "#ffffff", "track": "#555555",
+                "logo": "#ffffff", "logo_shadow": "#555555",
+                "fade": [ 0, 0, 0, 140 ]
+            },
+            "#resources": {
+                "bar_end.png": { "image-mod": [ 170, 170, 170 ] },
+                "buttons.png": { "image-mod": [ 0, 0, 0 ] },
+                "no-image.png": { "image-mod": [ 85, 85, 85 ] },
+                "scanlines_off.png": { "name": "SCANLINES" }
+            }
+        },
+        "Green Phosphor": {
+            "#pallet": {
+                "desktop": "#000000", "pattern": "#0d330d", "panel": "#031203",
+                "frame": "#33ff33", "title": "#33ff33", "on_title": "#031203",
+                "frame_off": "#1f991f", "title_off": "#1f991f", "on_title_off": "#031203",
+                "text": "#33ff33", "text_hi": "#b3ffb3", "text_dim": "#1f991f", "section": "#b3ffb3",
+                "select": "#33ff33", "on_select": "#031203",
+                "bar": "#33ff33", "on_bar": "#031203",
+                "dialog": "#062406", "on_dialog": "#33ff33", "dialog_frame": "#b3ffb3",
+                "progress": "#33ff33", "track": "#1f991f",
+                "logo": "#33ff33", "logo_shadow": "#1a661a",
+                "fade": [ 0, 0, 0, 140 ]
+            },
+            "#resources": {
+                "bar_end.png": { "image-mod": [ 51, 255, 51 ] },
+                "buttons.png": { "image-mod": [ 3, 18, 3 ] },
+                "no-image.png": { "image-mod": [ 26, 102, 26 ] },
+                "scanlines.png": { "name": "SCANLINES" }
+            }
+        },
+        "Amber Phosphor": {
+            "#pallet": {
+                "desktop": "#000000", "pattern": "#332200", "panel": "#140c00",
+                "frame": "#ffb000", "title": "#ffb000", "on_title": "#140c00",
+                "frame_off": "#b37b00", "title_off": "#b37b00", "on_title_off": "#140c00",
+                "text": "#ffb000", "text_hi": "#ffdc8a", "text_dim": "#b37b00", "section": "#ffdc8a",
+                "select": "#ffb000", "on_select": "#140c00",
+                "bar": "#ffb000", "on_bar": "#140c00",
+                "dialog": "#261800", "on_dialog": "#ffb000", "dialog_frame": "#ffdc8a",
+                "progress": "#ffb000", "track": "#b37b00",
+                "logo": "#ffb000", "logo_shadow": "#664600",
+                "fade": [ 0, 0, 0, 140 ]
+            },
+            "#resources": {
+                "bar_end.png": { "image-mod": [ 255, 176, 0 ] },
+                "buttons.png": { "image-mod": [ 20, 12, 0 ] },
+                "no-image.png": { "image-mod": [ 102, 70, 0 ] },
+                "scanlines.png": { "name": "SCANLINES" }
+            }
+        }
+    },
+    "#base": {
+        "font": "PxPlus_IBM_VGA_8x16.ttf",
+        "font[ja_JP]": "NotoSansJP-Regular.ttf",
+        "font[ko_KR]": "NotoSansKR-Regular.ttf",
+        "font[zh_CN]": "NotoSansSC-Regular.ttf",
+        "font[zh_TW]": "NotoSansTC-Regular.ttf",
+        "font[zh_HK]": "NotoSansHK-Regular.ttf",
+        "line-height-scale[ja_JP|zh_TW|zh_CN|zh_HK|ko_KR]": 0.8,
+        "font-size": 16,
+        "font-color": "text",
+        "font-scale": 1.0,
+        "font-scale[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": 2.0
+    },
+    "#override": {
+        "_CHECKED": "[X]",
+        "_UNCHECKED": "[ ]"
+    },
+    "#elements": {
+        "desktop": { "area": [ 0.0, 0.0, 1.0, 1.0 ], "fill": "desktop" },
+        "pattern": {
+            "area": [ 0.0, 0.0, 1.0, 1.0 ],
+            "image[font_scale_auto]": "pattern.png", "image[font_scale_auto,960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": "pattern_hi.png",
+            "patch[font_scale_auto]": [ 0, 0, 0, 0 ], "patch-repeat": "all", "image-mod": "pattern"
+        },
+        "scanlines": { "area": [ 0.0, 0.0, 1.0, 1.0 ], "image[font_scale_auto]": "SCANLINES", "patch[font_scale_auto]": [ 0, 0, 0, 0 ], "patch-repeat": "all" },
+        "menubar": { "area": [ 0.0, 0, 1.0, 16 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.0, 0, 1.0, 32 ], "fill": "bar" },
+        "menubar_brand": {
+            "parent": "menubar", "area": [ 8, 0.0, 0.35, 1.0 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 16, 0.0, 0.35, 1.0 ],
+            "font-color": "on_bar", "align": "midleft", "text": "≡ PortMaster"
+        },
+        "menubar_title": { "parent": "menubar", "area": [ 0.35, 0.0, 0.65, 1.0 ], "font-color": "on_bar", "align": "center", "text": "{scene.title}" },
+        "menubar_status": {
+            "parent": "menubar", "area": [ 0.65, 0.0, -8, 1.0 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.65, 0.0, -16, 1.0 ],
+            "font-color": "on_bar", "align": "midright", "text": "{system.battery_level}  {system.time_24hr}"
+        },
+        "statusbar": { "area": [ 0.0, -16, 1.0, 1.0 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.0, -32, 1.0, 1.0 ], "fill": "bar" },
+        "button_bar": {
+            "parent": "statusbar", "area": [ 8, 0.0, -8, 1.0 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 16, 0.0, -16, 1.0 ],
+            "font-color": "on_bar", "align": "midleft", "bar": [], "bar-space": 8, "bar-space[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": 16
+        },
+
+        "left": {
+            "area": [ 0.025, 32, 0.4625, -24 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.025, 64, 0.4625, -48 ],
+            "area[9:16|3:4]": [ 0.025, 32, -8, 0.5 ],
+            "image": "frame_single.png", "image[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": "frame_single_hi.png",
+            "patch": [ 8, 16, 16, 24 ], "patch[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 16, 32, 32, 48 ], "image-mod": "frame"
+        },
+        "left_body": { "parent": "left", "area": [ 0, 0, -8, -8 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0, 0, -16, -16 ], "fill": "panel" },
+        "left_title": {
+            "parent": "left", "area": [ 0.12, 0, 0.86, 48 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.12, 0, 0.86, 96 ],
+            "area[9:16|3:4]": [ 0.2, 0, 0.78, 48 ],
+            "fill": "title", "font-color": "on_title", "align": "center", "autoscroll": "marquee"
+        },
+        "left_in": { "parent": "left", "area": [ 16, 16, -24, -24 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 32, 32, -48, -48 ] },
+        "left_list": { "parent": "left_in", "area": [ 0.0, 0.0, 1.0, -32 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.0, 0.0, 1.0, -64 ] },
+        "left_foot": { "parent": "left_in", "area": [ 0.0, -16, 1.0, 1.0 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.0, -32, 1.0, 1.0 ] },
+        "left_media": { "parent": "left_in", "area": [ 0.0, 0.0, 1.0, -176 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.0, 0.0, 1.0, -352 ] },
+        "left_facts": { "parent": "left_in", "area": [ 0.0, -160, 1.0, 1.0 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.0, -320, 1.0, 1.0 ] },
+
+        "right": {
+            "area": [ 0.475, 32, -8, -24 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.475, 64, -16, -48 ],
+            "area[9:16|3:4]": [ 0.025, 0.5125, -8, -24 ],
+            "image": "frame_single.png", "image[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": "frame_single_hi.png",
+            "patch": [ 8, 16, 16, 24 ], "patch[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 16, 32, 32, 48 ], "image-mod": "frame_off"
+        },
+        "right_body": { "parent": "right", "area": [ 0, 0, -8, -8 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0, 0, -16, -16 ], "fill": "panel" },
+        "right_title": {
+            "parent": "right", "area": [ 0.12, 0, 0.86, 48 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.12, 0, 0.86, 96 ],
+            "area[9:16|3:4]": [ 0.2, 0.0, 0.78, 0.0267 ],
+            "fill": "title_off", "font-color": "on_title_off", "align": "center", "autoscroll": "marquee"
+        },
+        "right_in": { "parent": "right", "area": [ 16, 16, -24, -24 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 32, 32, -48, -48 ] },
+        "right_text": { "parent": "right_in", "area": [ 0.0, 0.0, 1.0, -32 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.0, 0.0, 1.0, -64 ] },
+        "right_foot": { "parent": "right_in", "area": [ 0.0, -16, 1.0, 1.0 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.0, -32, 1.0, 1.0 ] },
+        "right_media": {
+            "parent": "right_in", "area": [ 0.0, 0.0, 1.0, -224 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.0, 0.0, 1.0, -320 ],
+            "area[lowres]": [ 0.0, 0.0, 1.0, -144 ], "area[720x720]": [ 0.0, 0.0, 1.0, -368 ]
+        },
+        "right_lower": {
+            "parent": "right_in", "area": [ 0.0, -208, 1.0, 1.0 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.0, -288, 1.0, 1.0 ],
+            "area[lowres]": [ 0.0, -128, 1.0, 1.0 ], "area[720x720]": [ 0.0, -352, 1.0, 1.0 ]
+        },
+        "right_facts": {
+            "parent": "right_in", "area": [ 0.0, -208, 1.0, -112 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.0, -288, 1.0, -96 ],
+            "area[lowres]": [ 0.0, -128, 1.0, -32 ], "area[720x720]": [ 0.0, -352, 1.0, -256 ]
+        },
+        "right_desc": {
+            "parent": "right_in", "area": [ 0.0, -112, 1.0, 1.0 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.0, -96, 1.0, 1.0 ],
+            "area[lowres]": [ 0.0, -32, 1.0, 1.0 ], "area[720x720]": [ 0.0, -256, 1.0, 1.0 ]
+        },
+        "right_r1": { "parent": "right_in", "area": [ 0.0, 16, 1.0, 1.0 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.0, 32, 1.0, 1.0 ] },
+        "right_r2": { "parent": "right_in", "area": [ 0.0, 32, 1.0, 1.0 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.0, 64, 1.0, 1.0 ] },
+        "right_r3": { "parent": "right_in", "area": [ 0.0, 48, 1.0, 1.0 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.0, 96, 1.0, 1.0 ] },
+        "right_r4": { "parent": "right_in", "area": [ 0.0, 64, 1.0, 1.0 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.0, 128, 1.0, 1.0 ] },
+        "right_r5": { "parent": "right_in", "area": [ 0.0, 80, 1.0, 1.0 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.0, 160, 1.0, 1.0 ] },
+
+        "full": {
+            "area": [ 0.025, 32, -8, -24 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.025, 64, -16, -48 ],
+            "image": "frame_single.png", "image[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": "frame_single_hi.png",
+            "patch": [ 8, 16, 16, 24 ], "patch[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 16, 32, 32, 48 ], "image-mod": "frame"
+        },
+        "full_body": { "parent": "full", "area": [ 0, 0, -8, -8 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0, 0, -16, -16 ], "fill": "panel" },
+        "full_title": {
+            "parent": "full", "area": [ 0.25, 0, 0.73, 48 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.25, 0, 0.73, 96 ],
+            "area[9:16|3:4]": [ 0.2, 0, 0.78, 48 ],
+            "fill": "title", "font-color": "on_title", "align": "center", "autoscroll": "marquee"
+        },
+        "full_in": { "parent": "full", "area": [ 16, 16, -24, -24 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 32, 32, -48, -48 ] },
+        "full_text": { "parent": "full_in", "area": [ 0.0, 0.0, 1.0, -48 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.0, 0.0, 1.0, -96 ] },
+        "full_foot": { "parent": "full_in", "area": [ 0.0, -48, 1.0, 1.0 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.0, -96, 1.0, 1.0 ] },
+
+        "head": {
+            "area": [ 0.025, 32, -8, 136 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.025, 64, -16, 272 ],
+            "area[lowres]": [ 0.025, 32, -8, 104 ],
+            "image": "frame_single.png", "image[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": "frame_single_hi.png",
+            "patch": [ 8, 16, 16, 24 ], "patch[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 16, 32, 32, 48 ], "image-mod": "frame_off"
+        },
+        "head_body": { "parent": "head", "area": [ 0, 0, -8, -8 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0, 0, -16, -16 ], "fill": "panel" },
+        "head_in": { "parent": "head", "area": [ 16, 16, -24, -24 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 32, 32, -48, -48 ] },
+
+        "menu": {
+            "area": [ 0.025, 144, 0.4625, -24 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.025, 288, 0.4625, -48 ],
+            "area[lowres]": [ 0.025, 112, 0.4625, -24 ], "area[9:16|3:4]": [ 0.025, 144, -8, 0.55 ],
+            "image": "frame_single.png", "image[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": "frame_single_hi.png",
+            "patch": [ 8, 16, 16, 24 ], "patch[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 16, 32, 32, 48 ], "image-mod": "frame"
+        },
+        "menu_body": { "parent": "menu", "area": [ 0, 0, -8, -8 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0, 0, -16, -16 ], "fill": "panel" },
+        "menu_title": {
+            "parent": "menu", "area": [ 0.12, 0, 0.86, 160 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.12, 0, 0.86, 320 ],
+            "area[lowres]": [ 0.12, 0, 0.86, 128 ], "area[9:16|3:4]": [ 0.2, 0, 0.78, 160 ],
+            "fill": "title", "font-color": "on_title", "align": "center", "autoscroll": "marquee"
+        },
+        "menu_in": { "parent": "menu", "area": [ 16, 16, -24, -24 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 32, 32, -48, -48 ] },
+
+        "info": {
+            "area": [ 0.475, 144, -8, -24 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.475, 288, -16, -48 ],
+            "area[lowres]": [ 0.475, 112, -8, -24 ], "area[9:16|3:4]": [ 0.025, 0.5625, -8, -24 ],
+            "image": "frame_single.png", "image[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": "frame_single_hi.png",
+            "patch": [ 8, 16, 16, 24 ], "patch[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 16, 32, 32, 48 ], "image-mod": "frame_off"
+        },
+        "info_body": { "parent": "info", "area": [ 0, 0, -8, -8 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0, 0, -16, -16 ], "fill": "panel" },
+        "info_title": {
+            "parent": "info", "area": [ 0.12, 0, 0.86, 160 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.12, 0, 0.86, 320 ],
+            "area[lowres]": [ 0.12, 0, 0.86, 128 ], "area[9:16|3:4]": [ 0.2, 0.0, 0.78, 0.0299 ],
+            "fill": "title_off", "font-color": "on_title_off", "align": "center", "autoscroll": "marquee"
+        },
+        "info_in": { "parent": "info", "area": [ 16, 16, -24, -24 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 32, 32, -48, -48 ] },
+        "info_foot": { "parent": "info_in", "area": [ 0.0, -16, 1.0, 1.0 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.0, -32, 1.0, 1.0 ] },
+        "info_r1": { "parent": "info_in", "area": [ 0.0, 16, 1.0, 1.0 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.0, 32, 1.0, 1.0 ] },
+        "info_r2": { "parent": "info_in", "area": [ 0.0, 32, 1.0, 1.0 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.0, 64, 1.0, 1.0 ] },
+        "info_r3": { "parent": "info_in", "area": [ 0.0, 48, 1.0, 1.0 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.0, 96, 1.0, 1.0 ] },
+        "info_r4": { "parent": "info_in", "area": [ 0.0, 64, 1.0, 1.0 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.0, 128, 1.0, 1.0 ] },
+        "info_r5": { "parent": "info_in", "area": [ 0.0, 80, 1.0, 1.0 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.0, 160, 1.0, 1.0 ] },
+
+        "modal": {
+            "area": [ 0.3, 32, -8, -24 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.3, 64, -16, -48 ],
+            "area[lowres]": [ 0.025, 32, -8, -24 ], "area[9:16|3:4]": [ 0.025, 32, -8, -24 ],
+            "image": "frame_single.png", "image[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": "frame_single_hi.png",
+            "patch": [ 8, 16, 16, 24 ], "patch[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 16, 32, 32, 48 ], "image-mod": "frame"
+        },
+        "modal_body": { "parent": "modal", "area": [ 0, 0, -8, -8 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0, 0, -16, -16 ], "fill": "panel" },
+        "modal_title": {
+            "parent": "modal", "area": [ 0.25, 0, 0.73, 48 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.25, 0, 0.73, 96 ],
+            "fill": "title", "font-color": "on_title", "align": "center", "autoscroll": "marquee"
+        },
+        "modal_in": { "parent": "modal", "area": [ 16, 16, -24, -24 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 32, 32, -48, -48 ] },
+
+        "dialog": {
+            "area": [ 0.125, 0.2667, 0.8875, 0.7667 ], "area[9:16|3:4]": [ 0.0625, 0.35, 0.9375, 0.65 ],
+            "image": "frame.png", "image[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": "frame_hi.png",
+            "patch": [ 8, 16, 16, 24 ], "patch[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 16, 32, 32, 48 ], "image-mod": "dialog_frame"
+        },
+        "dialog_body": { "parent": "dialog", "area": [ 0, 0, -8, -8 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0, 0, -16, -16 ], "fill": "dialog" },
+        "dialog_title": {
+            "parent": "dialog", "area": [ 0.35, 0.0, 0.65, 0.12 ],
+            "fill": "dialog", "font-color": "dialog_frame", "align": "midtop", "autoscroll": "marquee"
+        },
+        "dialog_in": { "parent": "dialog", "area": [ 16, 16, -24, -24 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 32, 32, -48, -48 ] },
+
+        "list": {
+            "parent": "left_in", "area": [ 0.0, 0.0, 1.0, 1.0 ], "line-height": 1.0, "align": "midleft", "autoscroll": "marquee",
+            "select-fill": "select", "select-color": "on_select", "no-select-color": "section",
+            "pointer[font_scale_auto]": "bar_end.png", "pointer-fit": "row", "pointer-attach": "list",
+            "pointer-align": [ "midleft", "midright" ], "pointer-mirror": true
+        },
+        "label": { "font-color": "text_dim", "align": "midleft", "autoscroll": "marquee" },
+        "value": { "align": "midleft", "autoscroll": "marquee" },
+        "heading": { "font-color": "text_hi", "align": "midleft", "autoscroll": "marquee" },
+        "prose": { "align": "topleft", "text-wrap": true, "autoscroll": "slide", "scroll-speed": 60, "scroll-delay-start": 3000, "scroll-delay-end": 3000 },
+        "rule": { "font-color": "frame_off", "align": "midleft", "text": "────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────" }
+    },
+
+    "main_menu": {
+        "#element:desktop": {},
+        "#element:pattern": {},
+        "#element:menubar": {},
+        "#element:menubar_brand": {},
+        "#element:menubar_status": {},
+        "#element:head_body": {},
+        "#element:head": {},
+        "logo_shadow": {
+            "parent": "head_in", "area": [ 0.0, 0.0, 1.0, 1.0 ], "area[960x720|1024x768|1240x1080]": [ 0.0, 32, 1.0, -32 ],
+            "image": "LOGO_SHADOW", "image-mod": "logo_shadow"
+        },
+        "logo": {
+            "parent": "head_in", "area": [ 0.0, 0.0, 1.0, 1.0 ], "area[960x720|1024x768|1240x1080]": [ 0.0, 32, 1.0, -32 ],
+            "image": "LOGO", "image-mod": "logo"
+        },
+        "#element:menu_body": {},
+        "#element:menu": {},
+        "#element:menu_title": { "text": "Main Menu" },
+        "#element:list:option_list": { "parent": "menu_in", "list": [], "options": [] },
+        "#element:info_body": {},
+        "#element:info": {},
+        "#element:info_title": { "text": "System" },
+        "#element:label:device_label": { "parent": "info_in", "area": [ 0.0, 0.0, 0.4445, 1.0 ], "align": "topleft", "text": "DEVICE" },
+        "#element:value:device_value": { "parent": "info_in", "area": [ 0.4445, 0.0, 1.0, 1.0 ], "align": "topleft", "text": "{system.device_name}" },
+        "#element:label:cfw_label": { "parent": "info_r1", "area": [ 0.0, 0.0, 0.4445, 1.0 ], "align": "topleft", "text": "FIRMWARE" },
+        "#element:value:cfw_value": { "parent": "info_r1", "area": [ 0.4445, 0.0, 1.0, 1.0 ], "align": "topleft", "text": "{system.cfw_name} {system.cfw_version}" },
+        "#element:label:space_label": { "parent": "info_r2", "area": [ 0.0, 0.0, 0.4445, 1.0 ], "align": "topleft", "text": "FREE SPACE" },
+        "#element:value:space_value": { "parent": "info_r2", "area": [ 0.4445, 0.0, 1.0, 1.0 ], "align": "topleft", "text": "{system.free_space}" },
+        "#element:label:battery_label": { "parent": "info_r3", "area": [ 0.0, 0.0, 0.4445, 1.0 ], "align": "topleft", "text": "BATTERY" },
+        "#element:value:battery_value": { "parent": "info_r3", "area": [ 0.4445, 0.0, 1.0, 1.0 ], "align": "topleft", "text": "{system.battery_level}" },
+        "#element:rule:info_rule": { "parent": "info_r4", "area": [ 0.0, 0.0, 1.0, 1.0 ], "align": "topleft" },
+        "#element:prose:menu_tooltip": {
+            "parent": "info_r5", "area": [ 0.0, 0.0, 1.0, -32 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.0, 0.0, 1.0, -64 ],
+            "font-color": "text_hi", "text": "{scene.tooltip}"
+        },
+        "#element:label:version": { "parent": "info_foot", "area": [ 0.0, 0.0, 1.0, 1.0 ], "text": "PortMaster {system.portmaster_version}" },
+        "#element:statusbar": {},
+        "#element:button_bar": {},
+        "#element:scanlines": {}
+    },
+
+    "option_menu": {
+        "#element:desktop": {},
+        "#element:pattern": {},
+        "#element:menubar": {},
+        "#element:menubar_brand": {},
+        "#element:menubar_title": {},
+        "#element:menubar_status": {},
+        "#element:left_body": {},
+        "#element:left": {},
+        "#element:left_title": { "text": "{scene.title}" },
+        "#element:list:option_list": { "list": [], "options": [] },
+        "#element:right_body": {},
+        "#element:right": {},
+        "#element:prose:option_description": { "parent": "right_text", "area": [ 0.0, 0.0, 1.0, 1.0 ], "text": "{scene.tooltip}" },
+        "#element:label:ip_address": { "parent": "right_foot", "area": [ 0.0, 0.0, 1.0, 1.0 ], "text": "IP: {system.ip_address}" },
+        "#element:statusbar": {},
+        "#element:button_bar": {},
+        "#element:scanlines": {}
+    },
+
+    "ports_list": {
+        "#element:desktop": {},
+        "#element:pattern": {},
+        "#element:menubar": {},
+        "#element:menubar_brand": {},
+        "#element:menubar_title": {},
+        "#element:menubar_status": {},
+        "#element:left_body": {},
+        "#element:left": {},
+        "#element:left_title": { "text": "{ports_list.filter_ports} games" },
+        "#element:list:ports_list": { "parent": "left_list", "list": [] },
+        "#element:label:port_filters": {
+            "parent": "left_foot", "area": [ 0.0, 0.0, 1.0, 1.0 ],
+            "text": "{if:!ports_list.total_ports::ports_list.filter_ports}{ports_list.filters}{else}All ports{endif}"
+        },
+        "port_position": {
+            "parent": "left", "area": [ -112, -24, -24, -8 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ -224, -48, -48, -16 ],
+            "fill": "panel", "font-color": "frame", "align": "center",
+            "text": "{if:ports_list.position}{ports_list.position}/{endif}{ports_list.filter_ports}"
+        },
+        "#element:right_body": {},
+        "#element:right": {},
+        "#element:right_title": { "text": "{port_info.title}" },
+        "port_image": { "parent": "right_media", "area": [ 0.0, 0.0, 1.0, 1.0 ], "image": "{port_info.image}" },
+        "#element:heading:port_byline": { "parent": "right_facts", "area": [ 0.0, 0.0, 1.0, 0.1667 ], "text": "{if:port_info.porter}by {port_info.porter}{endif}" },
+        "#element:value:port_status": { "parent": "right_facts", "area": [ 0.0, 0.1667, 1.0, 0.3334 ], "text": "{port_info.ready_to_run}" },
+        "#element:label:genre_label": { "parent": "right_facts", "area": [ 0.0, 0.3334, 0.3334, 0.5 ], "text": "GENRE" },
+        "#element:value:genre_value": { "parent": "right_facts", "area": [ 0.3334, 0.3334, 1.0, 0.5 ], "text": "{port_info.genres}" },
+        "#element:label:size_label": { "parent": "right_facts", "area": [ 0.0, 0.5, 0.3334, 0.6667 ], "text": "SIZE" },
+        "#element:value:size_value": {
+            "parent": "right_facts", "area": [ 0.3334, 0.5, 1.0, 0.6667 ],
+            "text": "{if:port_info.install_size}{port_info.install_size}{else}{port_info.download_size}{endif}"
+        },
+        "#element:label:runtime_label": { "parent": "right_facts", "area": [ 0.0, 0.6667, 0.3334, 0.8334 ], "text": "{if:port_info.runtime}RUNTIME{endif}" },
+        "#element:value:runtime_value": {
+            "parent": "right_facts", "area": [ 0.3334, 0.6667, 1.0, 0.8334 ],
+            "text": "{if:port_info.runtime}{port_info.runtime} ({port_info.runtime_status}){endif}"
+        },
+        "#element:rule:port_rule": { "parent": "right_facts", "area": [ 0.0, 0.8334, 1.0, 1.0 ] },
+        "#element:prose:port_desc": { "parent": "right_desc", "area": [ 0.0, 0.0, 1.0, 1.0 ], "text": "{port_info.description}" },
+        "#element:statusbar": {},
+        "#element:button_bar": {},
+        "#element:scanlines": {}
+    },
+
+    "port_info": {
+        "#element:desktop": {},
+        "#element:pattern": {},
+        "#element:menubar": {},
+        "#element:menubar_brand": {},
+        "#element:menubar_title": {},
+        "#element:menubar_status": {},
+        "#element:left_body": {},
+        "#element:left": {},
+        "#element:left_title": { "text": "{port_info.title}" },
+        "port_image": { "parent": "left_media", "area": [ 0.0, 0.0, 1.0, 1.0 ], "image": "{port_info.image}" },
+        "#element:heading:port_byline": { "parent": "left_facts", "area": [ 0.0, 0.0, 1.0, 0.1001 ], "text": "{if:port_info.porter}by {port_info.porter}{endif}" },
+        "#element:value:port_status": { "parent": "left_facts", "area": [ 0.0, 0.1001, 1.0, 0.2001 ], "text": "{port_info.ready_to_run}" },
+        "#element:label:genre_label": { "parent": "left_facts", "area": [ 0.0, 0.2001, 1.0, 0.3001 ], "text": "GENRE" },
+        "#element:value:genre_value": { "parent": "left_facts", "area": [ 0.0, 0.3001, 1.0, 0.4001 ], "text": "{port_info.genres}" },
+        "#element:label:size_label": { "parent": "left_facts", "area": [ 0.0, 0.4001, 1.0, 0.5001 ], "text": "DOWNLOAD SIZE" },
+        "#element:value:size_value": { "parent": "left_facts", "area": [ 0.0, 0.5001, 1.0, 0.6001 ], "text": "{port_info.download_size}" },
+        "#element:label:space_label": { "parent": "left_facts", "area": [ 0.0, 0.6001, 1.0, 0.7001 ], "text": "FREE SPACE" },
+        "#element:value:space_value": { "parent": "left_facts", "area": [ 0.0, 0.7001, 1.0, 0.8001 ], "text": "{system.free_space}" },
+        "#element:label:runtime_label": { "parent": "left_facts", "area": [ 0.0, 0.8001, 1.0, 0.9001 ], "text": "{if:port_info.runtime}RUNTIME{endif}" },
+        "#element:value:runtime_value": {
+            "parent": "left_facts", "area": [ 0.0, 0.9001, 1.0, 1.0 ],
+            "text": "{if:port_info.runtime}{port_info.runtime} ({port_info.runtime_status}){endif}"
+        },
+        "#element:right_body": {},
+        "#element:right": {},
+        "#element:prose:port_info": { "parent": "right_media", "area": [ 0.0, 0.0, 1.0, 1.0 ], "text": "{port_info.description}" },
+        "#element:rule:port_rule": { "parent": "right_facts", "area": [ 0.0, 0.0, 1.0, 0.1667 ] },
+        "#element:label:instr_label": { "parent": "right_facts", "area": [ 0.0, 0.1667, 1.0, 0.3334 ], "text": "INSTRUCTIONS" },
+        "#element:prose:port_info_instruction": {
+            "parent": "right_lower", "area": [ 0.0, 32, 1.0, 1.0 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.0, 64, 1.0, 1.0 ],
+            "text": "{port_info.instructions}"
+        },
+        "#element:statusbar": {},
+        "#element:button_bar": {},
+        "#element:scanlines": {}
+    },
+
+    "port_instructions": {
+        "#element:desktop": {},
+        "#element:pattern": {},
+        "#element:menubar": {},
+        "#element:menubar_brand": {},
+        "#element:menubar_title": {},
+        "#element:menubar_status": {},
+        "#element:full_body": {},
+        "#element:full": {},
+        "#element:full_title": { "text": "{port_info.title}" },
+        "port_instructions": { "parent": "full_in", "area": [ 0.0, 0.0, 1.0, 1.0 ], "align": "topleft", "text": "{port_instructions.text}", "text-wrap": true, "scrollable": true, "scroll-amount": 2 },
+        "#element:statusbar": {},
+        "#element:button_bar": {},
+        "#element:scanlines": {}
+    },
+
+    "port_links": {
+        "#element:desktop": {},
+        "#element:pattern": {},
+        "#element:menubar": {},
+        "#element:menubar_brand": {},
+        "#element:menubar_title": {},
+        "#element:menubar_status": {},
+        "#element:left_body": {},
+        "#element:left": {},
+        "#element:left_title": { "text": "{port_info.title}" },
+        "#element:list:links_list": { "parent": "left_list", "list": [] },
+        "#element:label:links_count": { "parent": "left_foot", "area": [ 0.0, 0.0, 1.0, 1.0 ], "text": "Links: {port_links.count}" },
+        "#element:right_body": {},
+        "#element:right": {},
+        "#element:right_title": { "text": "{port_links.name}" },
+        "link_qr": { "parent": "right_text", "area": [ 0.0, 0.0, 1.0, 1.0 ], "image": "qr:{port_links.url}" },
+        "#element:value:link_info": { "parent": "right_foot", "area": [ 0.0, 0.0, 1.0, 1.0 ], "align": "center", "text": "{port_links.url}" },
+        "#element:statusbar": {},
+        "#element:button_bar": {},
+        "#element:scanlines": {}
+    },
+
+    "filter_list": {
+        "#element:desktop": { "fill": "fade", "blend-mode": "blend" },
+        "#element:menubar": {},
+        "#element:menubar_brand": {},
+        "#element:menubar_title": { "text": "Filters" },
+        "#element:menubar_status": {},
+        "#element:modal_body": {},
+        "#element:modal": {},
+        "#element:modal_title": { "text": "Filters" },
+        "#element:list:filter_list": { "parent": "modal_in", "list": [], "inactive-select-color": "text" },
+        "#element:statusbar": {},
+        "#element:button_bar": {},
+        "#element:scanlines": {}
+    },
+
+    "message_window": {
+        "#element:desktop": {},
+        "#element:pattern": {},
+        "#element:menubar": {},
+        "#element:menubar_brand": {},
+        "#element:menubar_title": {},
+        "#element:menubar_status": {},
+        "#element:full_body": {},
+        "#element:full": {},
+        "message_text": { "parent": "full_text", "area": [ 0.0, 0.0, 1.0, 1.0 ], "align": "bottomleft", "text": "", "text-wrap": true },
+        "#element:rule:progress_rule": { "parent": "full_foot", "area": [ 0.0, 0.0, 1.0, 0.3334 ], "font-color": "frame" },
+        "#element:label:progress_text": { "parent": "full_foot", "area": [ 0.0, 0.3334, 0.6, 0.6667 ], "text": "{system.progress_text}" },
+        "#element:value:progress_amount": { "parent": "full_foot", "area": [ 0.6, 0.3334, 1.0, 0.6667 ], "align": "midright", "text": "{system.progress_amount}" },
+        "progress_track": {
+            "parent": "full_foot", "area": [ 0.0, 0.6667, 1.0, 1.0 ],
+            "image[font_scale_auto]": "track.png", "image[font_scale_auto,960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": "track_hi.png",
+            "patch[font_scale_auto]": [ 0, 0, 0, 0 ], "patch-repeat": "all", "image-mod": "track"
+        },
+        "progress_bar": { "parent": "full_foot", "area": [ 0.0, 0.6667, 1.0, 1.0 ], "fill": [ 0, 0, 0, 0 ], "blend-mode": "blend", "progress-fill": "progress" },
+        "#element:statusbar": {},
+        "#element:button_bar": {},
+        "#element:scanlines": {}
+    },
+
+    "message_box": {
+        "#element:desktop": {},
+        "#element:pattern": {},
+        "#element:menubar": {},
+        "#element:menubar_brand": {},
+        "#element:menubar_title": {},
+        "#element:menubar_status": {},
+        "#element:dialog_body": {},
+        "#element:dialog": {},
+        "#element:dialog_title": { "text": "{scene.title}" },
+        "message_text": { "parent": "dialog_in", "area": [ 0.0, 0.0, 1.0, 1.0 ], "font-color": "on_dialog", "align": "center", "text": "", "text-wrap": true, "autoscroll": "marquee" },
+        "#element:statusbar": {},
+        "#element:button_bar": {},
+        "#element:scanlines": {}
+    },
+
+    "themes_list": {
+        "#element:desktop": {},
+        "#element:pattern": {},
+        "#element:menubar": {},
+        "#element:menubar_brand": {},
+        "#element:menubar_title": {},
+        "#element:menubar_status": {},
+        "#element:left_body": {},
+        "#element:left": {},
+        "#element:left_title": { "text": "{scene.title}" },
+        "#element:list:themes_list": { "list": [] },
+        "#element:right_body": {},
+        "#element:right": {},
+        "#element:right_title": { "text": "{theme_info.name}" },
+        "theme_image": { "parent": "right_media", "area": [ 0.0, 0.0, 1.0, 1.0 ], "image": "{theme_info.image}" },
+        "#element:heading:theme_creator": { "parent": "right_facts", "area": [ 0.0, 0.0, 1.0, 0.1667 ], "text": "{theme_info.creator}" },
+        "#element:label:theme_status": { "parent": "right_facts", "area": [ 0.0, 0.1667, 1.0, 0.3334 ], "text": "{theme_info.status}" },
+        "#element:rule:theme_rule": { "parent": "right_facts", "area": [ 0.0, 0.3334, 1.0, 0.5 ] },
+        "#element:prose:theme_desc": {
+            "parent": "right_lower", "area": [ 0.0, 48, 1.0, 1.0 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.0, 96, 1.0, 1.0 ],
+            "text": "{theme_info.description}"
+        },
+        "#element:statusbar": {},
+        "#element:button_bar": {},
+        "#element:scanlines": {}
+    },
+
+    "theme_server": {
+        "#element:desktop": {},
+        "#element:pattern": {},
+        "#element:menubar": {},
+        "#element:menubar_brand": {},
+        "#element:menubar_title": {},
+        "#element:menubar_status": {},
+        "#element:left_body": {},
+        "#element:left": {
+            "image": "frame_single.png", "image[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": "frame_single_hi.png", "image-mod": "frame_off"
+        },
+        "server_qr": { "parent": "left_in", "area": [ 0.0, 0.0, 1.0, 1.0 ], "image": "qr:{theme_server.url}" },
+        "#element:right_body": {},
+        "#element:right": {
+            "image": "frame_single.png", "image[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": "frame_single_hi.png", "image-mod": "frame"
+        },
+        "#element:right_title": { "text": "{scene.title}", "fill": "title", "font-color": "on_title" },
+        "#element:heading:server_title": { "parent": "right_in", "area": [ 0.0, 0.0, 1.0, 1.0 ], "align": "topleft", "text": "{theme_server.url}" },
+        "#element:rule:server_rule": { "parent": "right_r1", "area": [ 0.0, 0.0, 1.0, 1.0 ], "align": "topleft", "font-color": "frame" },
+        "#element:prose:server_info": { "parent": "right_r2", "area": [ 0.0, 0.0, 1.0, 1.0 ], "autoscroll": null, "text": "{theme_server.status}" },
+        "#element:statusbar": {},
+        "#element:button_bar": {},
+        "#element:scanlines": {}
+    },
+
+    "runtime_list": {
+        "#element:desktop": {},
+        "#element:pattern": {},
+        "#element:menubar": {},
+        "#element:menubar_brand": {},
+        "#element:menubar_title": {},
+        "#element:menubar_status": {},
+        "#element:left_body": {},
+        "#element:left": {},
+        "#element:left_title": { "text": "{scene.title}" },
+        "#element:list:runtime_list": { "list": [], "options": [] },
+        "#element:right_body": {},
+        "#element:right": {},
+        "#element:right_title": { "text": "{runtime_info.name}" },
+        "#element:heading:runtime_status": { "parent": "right_in", "area": [ 0.0, 0.0, 1.0, 1.0 ], "align": "topleft", "text": "{runtime_info.status}" },
+        "#element:label:dl_label": { "parent": "right_r1", "area": [ 0.0, 0.0, 0.5, 1.0 ], "align": "topleft", "text": "DOWNLOAD SIZE" },
+        "#element:value:dl_value": { "parent": "right_r1", "area": [ 0.5, 0.0, 1.0, 1.0 ], "align": "topleft", "text": "{runtime_info.download_size}" },
+        "#element:label:disk_label": { "parent": "right_r2", "area": [ 0.0, 0.0, 0.5, 1.0 ], "align": "topleft", "text": "INSTALL SIZE" },
+        "#element:value:disk_value": { "parent": "right_r2", "area": [ 0.5, 0.0, 1.0, 1.0 ], "align": "topleft", "text": "{runtime_info.disk_size}" },
+        "#element:rule:runtime_rule": { "parent": "right_r3", "area": [ 0.0, 0.0, 1.0, 1.0 ], "align": "topleft" },
+        "#element:label:ports_label": { "parent": "right_r4", "area": [ 0.0, 0.0, 1.0, 1.0 ], "align": "topleft", "text": "USED BY" },
+        "#element:prose:option_description": {
+            "parent": "right_r5", "area": [ 0.0, 0.0, 1.0, -32 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.0, 0.0, 1.0, -64 ],
+            "text": "{runtime_info.ports}"
+        },
+        "#element:label:ip_address": { "parent": "right_foot", "area": [ 0.0, 0.0, 1.0, 1.0 ], "text": "IP: {system.ip_address}" },
+        "#element:statusbar": {},
+        "#element:button_bar": {},
+        "#element:scanlines": {}
+    },
+
+    "featured_ports_list": {
+        "#element:desktop": {},
+        "#element:pattern": {},
+        "#element:menubar": {},
+        "#element:menubar_brand": {},
+        "#element:menubar_title": {},
+        "#element:menubar_status": {},
+        "#element:left_body": {},
+        "#element:left": {},
+        "#element:left_title": { "text": "{scene.title}" },
+        "#element:list:option_list": { "list": [], "options": [] },
+        "#element:right_body": {},
+        "#element:right": {},
+        "#element:right_title": { "text": "{featured_ports.name}" },
+        "featured_image": { "parent": "right_media", "area": [ 0.0, 0.0, 1.0, 1.0 ], "image": "{featured_ports.image}" },
+        "#element:rule:featured_rule": { "parent": "right_facts", "area": [ 0.0, 0.0, 1.0, 0.1667 ] },
+        "#element:prose:featured_port_description": {
+            "parent": "right_lower", "area": [ 0.0, 16, 1.0, 1.0 ], "area[960x720|1024x768|1280x720|1280x800|1240x1080|1920x1080|1920x1152]": [ 0.0, 32, 1.0, 1.0 ],
+            "text": "{featured_ports.description}"
+        },
+        "#element:statusbar": {},
+        "#element:button_bar": {},
+        "#element:scanlines": {}
+    }
+}
